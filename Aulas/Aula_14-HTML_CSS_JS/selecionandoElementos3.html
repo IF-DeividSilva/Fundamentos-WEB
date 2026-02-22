@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #03</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Formulário</h1>
+    <form name="pesquisa" action="http://www.google.com.br/search">
+        <input type="text" name="q" placeholder="Digite o termo...">
+        <select name="hl">
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="en-us">Inglês (Americano)</option>
+        </select>
+        <button>Pesquisar</button>
+    </form>
+    <script>
+        console.log(document.forms) // HTMLCollection de todos os formulários da página
+        console.log(document.forms[0]) // primeiro formulário da página
+        console.log(document.getElementsByName('pesquisa'))
+        console.log(document.pesquisa) // forma mais simples de acessar um formulário, utilizando o nome do formulário como propriedade do objeto document
+        console.log(document.pesquisa.q) // acessar o campo de texto do formulário utilizando a propriedade do formulário
+        document.pesquisa.q.value = 'JavaScript' // atribuir um valor ao campo de texto do formulário
+        document.pesquisa.hl.value = 'en-us' // atribuir um valor ao campo de seleção do formulário
+        
+</script>
+</body>
+
+</html>
