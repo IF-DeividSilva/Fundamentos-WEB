@@ -17,7 +17,32 @@
         </ul>
     </div>
     <script>
-        // ...
+         const lista = document.querySelector('div ul[destino="escritório"]')
+         console.log('Elemento "ul" ..........')
+         console.log('childNodes', lista.childNodes)
+         console.log('destino', lista.destino)
+         // pega o valor do atributo "destino" usando getAttribute
+         console.log('getAttribute', lista.getAttribute('destino'))
+         // paga se há atributo usando hasAttribute
+         console.log('hasAttribute', lista.hasAttribute('destino'))
+        // altera o valor do atributo "destino" para "casa" usando setAttribute
+        lista.setAttribute('destino', 'casa')
+        // adiciona um novo atributo "status" com o valor "aberto" usando setAttribute 
+        lista.setAttribute('status', 'aberto') 
+        // remove o atributo "destino" usando removeAttribute
+        lista.removeAttribute('destino')
+        console.log(lista.dataset.urgencia)
+        lista.dataset.urgencia = 10
+        console.log(lista.getAttribute('data-urgencia'))
+
+        // ## Cuidado ##
+
+        const label = document.querySelector('label')
+        console.log(label.for) // undifined, pois "for" é uma palavra reservada do JavaScript
+        console.log(label.htmlFor) // compras
+        
+        console.log(label.getAttribute('for')) // compras
+
     </script>
 </body>
 
