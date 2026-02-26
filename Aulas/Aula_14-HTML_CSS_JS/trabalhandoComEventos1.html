@@ -9,9 +9,30 @@
 
 <body class="conteudo exercicio">
     <div>
-        <a href="https://google.com.br">Google</a>
+        <!-- Com onclick fica explicito o que vc tá fazendo
+         porém é pouco flexivel-->
+
+       <!-- onclick="navegarEm5s(event)" -->
+        <a espera-um-pouco href="https://google.com.br">Google</a>
     </div>
     <script>
-        // ...
+        function navegarEm5s(e) {
+            e.preventDefaut()
+            console.log('Saindo em 5s...')
+            setTimeout(() => {
+                const link = e.target
+                window.location.href = link.href
+            }, 5000)
+        }
+
+        // sem onclick (de forma implicita) 
+        // não é tão claro saber que está manipulado no HTML via JS
+
+        //const a = document.querySelector('a')
+        //a.onclick = navegarEm5s
+
+        // mais recomendado fazer propriedades especificas...
+        const a = document.querySeletor('[espera-um-pouco]')
+        a.onclick = navegarEm5s
     </script>
 </body>
