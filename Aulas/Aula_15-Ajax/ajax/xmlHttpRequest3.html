@@ -11,6 +11,42 @@
     <h1>Estados</h1>
 
     <script>
-        // ...
+        function ajax(config) {
+            const xhr = new XMLHttpRequest()
+            xhr.open(config.metodo, config.url, true)
+
+            xhr.onreadystatechange = e => {
+                // terminou o processo de upload
+                if (xhr.readyState === 4){
+                    // code de sucesso
+                    if (xhr.status === 200) {
+                        config.sucesso(xhr.responseXML)
+                    } else if (xhr.status >= 400) {
+                        config.erro({
+                            codigo: xhr.status,
+                            texto: xhr.statusText
+                        })
+                    }
+                }
+            }
+            xhr.send()
+        }
+
+        ajax({
+            url: "dados/estados.xml", 
+            metodo: "get",
+            sucesso(resposta) {
+                console.log(resposta)
+                const estados = resposta.getElementsByTagName('estado')
+                const itens = Array.from(estados).recuce(
+                    (html, estado) => html + `<li>${estado.attributes.nome.value}</li>`, ''
+                )
+                document.body.insertAdjacentElement('beforeend', `<ul>${itens}</ul>`)
+            },
+            erro(e){
+                const msg = document.createTextNode(`${e.codigo}: ${e.texto}`)
+                document.body.appendChild(msg)
+            }
+        })
     </script>
 </body>
