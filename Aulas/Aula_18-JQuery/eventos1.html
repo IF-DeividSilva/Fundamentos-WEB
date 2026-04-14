@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        input {
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Eventos #01</h1>
+    <div id='posicao'></div>
+    <div id='cliques'>Cliques: 0</div>
+    <input type="text" placeholder="Cor de Background">
+
+    <script>
+        function mostrarPosicaoMouse(e) {
+            //add na div posicao o valor de x e y do mouse
+            $('#posicao').html(`x: ${e.clientX} y: ${e.clientY}`)
+        }
+
+        // add no body a posição do mouse (deixa visivel)
+        $('body').on('mousemove', mostrarPosicaoMouse)
+
+        // mostra a posiçao somente se o mouse estiver fora do body
+        $('#posicao').mouseover(e => {
+            $('body').off('mousemove', mostrarPosicaoMouse)
+        })
+
+        //  faz a msm coisa usando o mouseleave
+        $('#posicao').mouseleave(e => {
+            $('body').mousemove(mostrarPosicaoMouse)
+        })
+
+        // variavel para add os cliques do mouse
+        let cliques = 0
+        // pega o valor da let cliques soma 1 e add o valor na div cliques
+        $('body').click(e => {
+            $('#cliques').html(`Cliques: ${++cliques}`)
+        })
+        // salva o background original em uma constante
+        const backgroundOriginal = $('body').css('background-color')
+
+        // ketup atualiza conforme digita ("ao mesmo tempo")
+        $('input').keyup(function (e) {
+            // salva o valor do input na const valor
+            const valor = $(this).val()
+            // verifica se é um valor de cor valida (começa com # e dps os Hex)
+            if (valor.match(/#[\da-fA-F]{6}/) || valor.match(/#[\da-fA-F]{3}/)){
+                // caso for valido ele atualiza a cor de fundo
+                $('body').css('background-color', valor)
+            }else{
+                // caso nao mantem volta para a cor original
+                $('body').css('background-color', backgroundOriginal)
+            }
+            
+        })
+
+    </script>
+</body>
