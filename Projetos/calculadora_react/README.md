@@ -86,7 +86,7 @@ calculadora_react/
 ```
 ## Foto da Calculadora no Site
 
-![Calculadora React](./src/imgs/calculator.png)
+<img src="./src/imgs/calculator.png" alt="Calculadora React" width="500">
 
 ---
 
