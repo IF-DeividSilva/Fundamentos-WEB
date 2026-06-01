@@ -239,12 +239,12 @@ npm update
 ## Licença
 
 Este projeto é fornecido como está para fins educacionais.
+Desenvolvido como parte do aprendizado de **React** e **JavaScript Moderno** do Curso Web Moderno (Cod3r).
 
 ---
 
 ## Autor
 Deivid da Silva Galvão 
-Desenvolvido como parte do aprendizado de **React** e **JavaScript Moderno** do Curso Web Moderno (Cod3r).
 
 ---
 
