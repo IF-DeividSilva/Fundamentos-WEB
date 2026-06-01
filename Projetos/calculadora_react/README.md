@@ -84,6 +84,9 @@ calculadora_react/
 ├── package.json            # Dependências e scripts
 └── README.md               # Este arquivo
 ```
+## Foto da Calculadora no Site
+
+![Calculadora React](./src/imgs/calculator.png)
 
 ---
 
