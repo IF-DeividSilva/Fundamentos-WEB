@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Componente</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <saldacao nome="Deivid"></saldacao>
+        <saldacao nome="Maria"></saldacao>
+        <saldacao nome="Eni Ipsolon"></saldacao>
+    </div>
+
+    <script>
+        Vue.component('saldacao', {
+            props: ['nome'],
+            template: `
+            <div>Olá, {{ nome }}!</div>
+            `
+        })
+
+        new Vue({
+            el: '#app'
+        });
+    </script>
+</body>
+</html>
