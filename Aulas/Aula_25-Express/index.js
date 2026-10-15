@@ -1,12 +1,19 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const usuarioApi = require('./api/usuario');
 
 const saudacao = require('./saudacaoMid');
 
-// Usando o middleware body-parser para interpretar o corpo da requisição como JSON ou texto
+app.post('/usuario', usuarioApi.salvar);
+app.get('/usuario', usuarioApi.obter);
+// Importando o módulo produto (que exporta funções) e passando o app e um texto como parâmetro
+require('./api/produto')(app, ' com param!');
+
+// Usando o middleware body-parser para interpretar o corpo da requisição como JSON ou texto ou como URL encoded
 app.use(bodyParser.json());
 app.use(bodyParser.text());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // usando o middleware saudacao, que é uma função que retorna outra função
 app.use(saudacao('Lune Carrara'));
@@ -27,7 +34,7 @@ app.get('/clientes/relatorio', (req, res) => {
     });
 });*/
 
-// Post para clientes, usando o body-parser
+// Post para clientes, usando o body-parser (req.body) para interpretar o corpo da requisição
 app.post('/corpo', (req, res) => {
     res.send(`Corpo da requisição: ${JSON.stringify(req.body)}`);
 });
